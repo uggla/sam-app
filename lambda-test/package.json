@@ -1,0 +1,15 @@
+{
+  "name": "lambda-test-sam",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.639.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.66.0"
+  }
+}
