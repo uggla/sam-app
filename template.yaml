@@ -39,8 +39,10 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.7
       Policies:
-        S3ReadPolicy:
-          BucketName: mypfetestbucket
+        - S3ReadPolicy:
+            BucketName: mypfetestbucket
+        - SQSSendMessagePolicy:
+            QueueName: ResultQueue
       Events:
         SQSQueueEvent:
           Type: SQS
