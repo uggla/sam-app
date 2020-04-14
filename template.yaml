@@ -71,12 +71,32 @@ Resources:
                 AWS: '*'
               Action:
                 - 'SQS:GetQueueUrl'
+                - 'SQS:SendMessage'
                 - 'SQS:ReceiveMessage'
                 - 'SQS:DeleteMessage'
-                - 'SQS:SendMessage'
               Resource: !GetAtt SimpleQueue.Arn
         Queues:
           - !Ref SimpleQueue
+  ResultQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName : ResultQueue
+  SQSResultQueuePolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties: 
+        PolicyDocument:
+          Id: SQSResultPolicy
+          Statement:
+            - Sid: SQSResultPolicy
+              Effect: Allow
+              Principal:
+                AWS: '*'
+              Action:
+                - 'SQS:GetQueueUrl'
+                - 'SQS:SendMessage'
+              Resource: !GetAtt ResultQueue.Arn
+        Queues:
+          - !Ref ResultQueue
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
