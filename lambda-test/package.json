@@ -7,7 +7,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.639.0"
+    "aws-sdk": "^2.814.0"
   },
   "devDependencies": {
     "serverless": "^1.66.0"
